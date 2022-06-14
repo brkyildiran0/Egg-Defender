@@ -9,7 +9,26 @@ public class EnemyMovementHandler : MonoBehaviour
 
     void Start()
     {
+        FindPath();
+        ReturnToStart();
         StartCoroutine(FollowPath());
+    }
+
+    void FindPath()
+    {
+        path.Clear();
+
+        GameObject parentOfAllTiles = GameObject.FindGameObjectWithTag("Path");
+
+        foreach (Transform child in parentOfAllTiles.transform)
+        {
+            path.Add(child.GetComponent<Waypoint>());
+        }
+    }
+
+    void ReturnToStart()
+    {
+        transform.position = path[0].transform.position;
     }
 
     IEnumerator FollowPath()
@@ -29,5 +48,8 @@ public class EnemyMovementHandler : MonoBehaviour
                 yield return new WaitForEndOfFrame();
             }
         }
+
+        //If code reaches this point, it means that the rim has successfully survived the defense.
+        Destroy(gameObject);
     }
 }
