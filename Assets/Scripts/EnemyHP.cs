@@ -5,6 +5,13 @@ public class EnemyHP : MonoBehaviour
     [SerializeField] int maxHP = 3;
     [SerializeField] int currentHP = 0;
 
+    Enemy enemy;
+
+    void Awake()
+    {
+        enemy = GetComponent<Enemy>();  
+    }
+
     void OnEnable()
     {
         currentHP = maxHP;    
@@ -17,6 +24,7 @@ public class EnemyHP : MonoBehaviour
         if (currentHP <= 0)
         {
             gameObject.SetActive(false);
+            enemy.RewardGold();
         } 
     }
 }
