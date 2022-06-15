@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemyHP : MonoBehaviour
 {
-    [SerializeField] int maxHP = 10;
+    [SerializeField] int maxHP = 3;
     [SerializeField] int currentHP = 0;
 
     void OnEnable()
