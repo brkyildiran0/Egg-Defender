@@ -2,14 +2,21 @@ using UnityEngine;
 
 public class EnemyHP : MonoBehaviour
 {
-    [SerializeField] int HP = 10;
+    [SerializeField] int maxHP = 10;
+    [SerializeField] int currentHP = 0;
+
+    void OnEnable()
+    {
+        currentHP = maxHP;    
+    }
 
     void OnParticleCollision(GameObject other)
     {
-        if (HP <= 0)
+        currentHP--;
+
+        if (currentHP <= 0)
         {
-            Destroy(gameObject);
-        }
-        HP--;
+            gameObject.SetActive(false);
+        } 
     }
 }

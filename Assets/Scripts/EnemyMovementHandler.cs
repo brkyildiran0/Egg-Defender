@@ -7,7 +7,7 @@ public class EnemyMovementHandler : MonoBehaviour
     [SerializeField] List<Waypoint> path = new List<Waypoint>();
     [SerializeField] [Range(0f,5f)] float m_speed = 1f;
 
-    void Start()
+    void OnEnable()
     {
         FindPath();
         ReturnToStart();
@@ -50,6 +50,6 @@ public class EnemyMovementHandler : MonoBehaviour
         }
 
         //If code reaches this point, it means that the rim has successfully survived the defense.
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }
