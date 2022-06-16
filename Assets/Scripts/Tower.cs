@@ -6,7 +6,7 @@ using UnityEngine;
 public class Tower : MonoBehaviour
 {
     [SerializeField] int cost = 50;
-    [SerializeField] float buildDelay = 0.8f;
+    [SerializeField] float buildDelay = 0.7f;
 
     void Start()
     {
